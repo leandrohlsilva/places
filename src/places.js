@@ -164,6 +164,11 @@ export default function places(options) {
       }
 
       autocompleteInstance.autocomplete[methodName](...args);
+
+      // if setVal is called, update previousQuery variable so clear works reliably.
+      if (methodName === 'setVal') {
+        previousQuery = autocompleteInstance.val();
+      }
     };
   });
 
